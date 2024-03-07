@@ -10,5 +10,16 @@ server.listen(12345,"0.0.0.0",() => {
 });
 
 function handleConnection(){
-    console.log("new connection")
+    const remoteAddress = `${socket.remoteAddress}:${socket.remoteAddress}`;
+    console.log(`new connection from ${remoteAddress}`);
+    socket.on("data",onConnData);
+    socket.on("close",onConnClose);
+    socket.om("error",onConnError);
 }
+
+function onConnData (data){
+    console.log (`${remoteAddress } sent : ${data}`);
+}
+
+function onConnClose(){}
+function onConnError(){}
